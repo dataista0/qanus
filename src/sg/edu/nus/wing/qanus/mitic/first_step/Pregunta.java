@@ -296,16 +296,16 @@ public class Pregunta
         String entity = "";
         String mega_entity = "";
         
-				while (tokens.hasMoreTokens()) 
+		while (tokens.hasMoreTokens()) 
         {
-						String word = tokens.nextToken();
+			String word = tokens.nextToken();
             //System.out.println("Word: " + word);
-						int delimNer = word.indexOf('/');
-            
-						if (delimNer != -1) 
+			int delimNer = word.indexOf('/');
+
+			if (delimNer != -1) 
             {
 				
-							try
+			  try
               {
               
               	String nerTag = word.substring(delimNer+1);
@@ -349,11 +349,11 @@ public class Pregunta
                 }
                 
                 
-							} catch (Exception ex) {
+					} catch (Exception ex) {
                     System.out.println("excepcion: "+ex);
-								continue;
-							}
-						}
+					continue;
+					}
+				}
             
          }
         

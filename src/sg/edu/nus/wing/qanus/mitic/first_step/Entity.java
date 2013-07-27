@@ -17,4 +17,9 @@ public class Entity
         type = in_type;
             
     }
+    
+    public void print()
+    {
+    	System.out.println(type+":"+entity);
+    }
 }
