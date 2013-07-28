@@ -97,6 +97,7 @@ public class LuceneQuerier
 	  return nombre;
   }
  
+
   
   /**
    * Ejecuta una query y retorna RESULTS_TO_RETRIEVE documentos rankeados
@@ -105,7 +106,7 @@ public class LuceneQuerier
    * @see ScoreDoc
    * 
    */
-  public ScoreDoc[] retrieveDocs(String query)  
+  public ScoreDoc[] query(String query)  
   {
      	// Retrieve documents based on the search string from the search engine
 			//System.out.println(query);
@@ -236,7 +237,7 @@ public class LuceneQuerier
 			{
 				Field field = fields.get(i);
 				String name = field.name();
-				if(name.compareTo("CONFL") == 0 || name.compareTo("JOURL") == 0 || name.compareTo("COAULINKS") == 0 || name.compareTo("Text") == 0 )continue;
+				//if(name.compareTo("CONFL") == 0 || name.compareTo("JOURL") == 0 || name.compareTo("COAULINKS") == 0 || name.compareTo("Text") == 0 )continue;
 				
 				if(!field_names.contains(name))field_names.add(name);
 				
@@ -394,17 +395,23 @@ public class LuceneQuerier
   public void printDoc(Document doc)
   {
   	List<Field> fields = (List<Field>) doc.getFields();
-  	
+  	String str = "{";
   	if(fields != null)
   	{
   		for(Field field: fields)
   		{
-  			if(field.name().compareToIgnoreCase("COAULINKS") == 0 || field.name().compareToIgnoreCase("JOURL") == 0 
-  					|| field.name().compareToIgnoreCase("CONFL") == 0) continue;
-  			
-  			System.out.println(field.name()+": "+field.stringValue());
+  			if(field.name().compareTo("ALL") == 0) continue;
+  			str+=field.name().toLowerCase()+": "+field.stringValue()+", ";
   		}
   	}
+  	if(str.compareTo("{")!=0)
+  	{
+  		str =str.substring(0, str.length() -1)+"}";
+  		System.out.println(str);
+  	}
+  	
+  	else System.out.println("null doc");
+  		
   	
   	
   }

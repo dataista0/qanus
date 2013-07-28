@@ -292,7 +292,7 @@ public class AQUAINT2XMLHandler extends DefaultHandler implements IXMLParser {
     
     //DOC_FIELD -> vuelve a DOC 
 		else if (m_CurrentState == m_enumStates.DOC_FIELD) {
-				//Este if está funcionando como un checkeo al pedo
+				//Este if esta funcionando como un checkeo al pedo
         if(
                   qName.compareToIgnoreCase("DOCNO") == 0 ||
                   qName.compareToIgnoreCase("NAMES") == 0 ||

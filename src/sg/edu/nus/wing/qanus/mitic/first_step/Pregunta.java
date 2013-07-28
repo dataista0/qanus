@@ -506,7 +506,7 @@ public class Pregunta
     public ScoreDoc[]  getScoreDocs()
     {
         //Se ejecuta la query creada
-    		ScoreDoc[] resQuery = querier.retrieveDocs(query);
+    		ScoreDoc[] resQuery = querier.query(query);
         
         String names = "";
         String docNo = "";
@@ -726,7 +726,7 @@ public class Pregunta
 			}
 			else
 			{
-				ScoreDoc[] resQuery = querier.retrieveDocs(campo+":("+entidad+")");
+				ScoreDoc[] resQuery = querier.query(campo+":("+entidad+")");
 				if(resQuery.length > 0 && querier.retrieveDoc(resQuery[0]).get(campo).compareToIgnoreCase(entidad) == 0)
 				{
 					return true;
