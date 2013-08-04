@@ -177,11 +177,12 @@ public class QuestionClassifierWithStanfordClassifier implements ITextProcessing
 			return null;
 		}
 
-		String[] l_Result = new String[1];
+		String[] l_Result = new String[2];
 
 		try {
 			// Create test file for Stanford Classifier
 			CreateTestFile(a_Sentences[0]);
+			//System.out.println(m_ResFileName);
 
 			// Invoke Stanford Classifier after re-directing stdout
 			PrintStream stdout = System.out;
@@ -207,7 +208,9 @@ public class QuestionClassifierWithStanfordClassifier implements ITextProcessing
 				String l_Question = l_ST.nextToken();
 				String l_DummyAnswer = l_ST.nextToken();
 				String l_Answer = l_ST.nextToken();
+				String l_Confidence = l_ST.nextToken();
 				l_Result[0] = l_Answer;
+				l_Result[1] = l_Confidence;
 			}
 			
 		} catch (Exception ex) {
