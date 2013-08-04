@@ -218,7 +218,7 @@ public class LuceneQuerier
     return res.toArray(new Document[0]);
   }
   
-  public int total()
+  public int statisticTotal()
   {
 	  return allDocs().length;
   }
