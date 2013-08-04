@@ -16,5 +16,17 @@ public abstract class Feature {
 	 * @return a score between 0 and 1 for the passage
 	 */
 	public abstract double GetScore(String[] a_SearchStr, String a_Passage);
+	
+	/**
+	 * a wrapper for GetScore first parameter type (String[])
+	 * @author julian
+	 * @param a_SearchString
+	 * @param a_Passage
+	 * @return
+	 */
+	public double GetScore(String string, String passage) {
+		String[] param = {string};
+		return GetScore(param, passage);
+	}
 
 } // end class Feature
