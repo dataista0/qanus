@@ -38,10 +38,12 @@ public class FeatureSearchTermCoverage extends Feature {
 
 		// Walk  through all search terms, and check if they occur within the given passage
 		HashMap<String, Integer> l_SearchTermOccurence = new HashMap<String, Integer>();
+		int repetidos = 0;
 		while (l_STMatch.hasMoreTokens()) {
 			String l_SearchTerm = l_STMatch.nextToken();
 			// Don't process repeated search terms
 			if (l_SearchTermOccurence.containsKey(l_SearchTerm.toLowerCase())) {
+				repetidos++;
 				continue;
 			}
 			// Check if search term appears in passage
@@ -57,7 +59,7 @@ public class FeatureSearchTermCoverage extends Feature {
 		// Score of 0 is when no search terms occur within passage
 		double l_ComputedScore = 0;
 		if (l_NumSearchTerms != 0) {
-			l_ComputedScore = l_SearchTermOccurence.size() / (double) l_NumSearchTerms;
+			l_ComputedScore = l_SearchTermOccurence.size() / (double) (l_NumSearchTerms - repetidos);
 		} else {
 			// If search query has no words, then it is logical that we return a 0 for the score
 			l_ComputedScore = 0;
