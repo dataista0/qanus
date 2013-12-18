@@ -44,6 +44,10 @@ public class FeatureSearchTermProximity extends Feature {
 		if (a_SearchStrings == null || a_SearchStrings.length != 2) {
 			return 0;
 		}
+		else
+		{
+			System.out.print("  "+a_SearchStrings.length);
+		}
 
 		// Count the number of words within the passage
 		StringTokenizer l_ST_Passage = new StringTokenizer(a_Passage);
